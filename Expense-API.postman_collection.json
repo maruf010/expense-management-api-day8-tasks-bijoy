@@ -1,0 +1,609 @@
+{
+  "info": {
+    "name": "Expense Management API",
+    "description": "Complete API collection for Expense Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "categoryId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "expenseId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "budgetId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Signup",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    pm.collectionVariables.set('token', response.accessToken);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Maruf Hossain\",\n  \"email\": \"maruf@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/signup",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "signup"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    pm.collectionVariables.set('token', response.accessToken);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"maruf@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Create Category",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    pm.collectionVariables.set('categoryId', response._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Food & Dining\",\n  \"slug\": \"food-dining\",\n  \"color\": \"#FF6B6B\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Food & Dining Updated\",\n  \"color\": \"#FF0000\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/categories/{{categoryId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories", "{{categoryId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/categories/{{categoryId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories", "{{categoryId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expenses",
+      "item": [
+        {
+          "name": "Create Expense",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    pm.collectionVariables.set('expenseId', response._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Lunch at Restaurant\",\n  \"amount\": 450,\n  \"categoryId\": \"{{categoryId}}\",\n  \"date\": \"2025-10-15\",\n  \"paymentMethod\": \"cash\",\n  \"tags\": [\"lunch\", \"restaurant\"],\n  \"notes\": \"Team lunch\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["expenses"]
+            }
+          }
+        },
+        {
+          "name": "Get All Expenses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["expenses"]
+            }
+          }
+        },
+        {
+          "name": "Get Expense by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/expenses/{{expenseId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["expenses", "{{expenseId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Expense",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Dinner at Restaurant\",\n  \"amount\": 650\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/expenses/{{expenseId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["expenses", "{{expenseId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Expense",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/expenses/{{expenseId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["expenses", "{{expenseId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Budgets",
+      "item": [
+        {
+          "name": "Create Budget",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    pm.collectionVariables.set('budgetId', response._id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"month\": \"2025-10\",\n  \"categoryId\": \"{{categoryId}}\",\n  \"limit\": 15000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/budgets",
+              "host": ["{{baseUrl}}"],
+              "path": ["budgets"]
+            }
+          }
+        },
+        {
+          "name": "Get Budgets by Month",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/budgets?month=2025-10",
+              "host": ["{{baseUrl}}"],
+              "path": ["budgets"],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "2025-10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Budget",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit\": 20000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/budgets/{{budgetId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["budgets", "{{budgetId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Budget",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/budgets/{{budgetId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["budgets", "{{budgetId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recurring Expenses",
+      "item": [
+        {
+          "name": "Create Recurring Expense",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Netflix Subscription\",\n  \"amount\": 800,\n  \"categoryId\": \"{{categoryId}}\",\n  \"cadence\": \"monthly\",\n  \"startDate\": \"2025-10-01\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/recurring-expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["recurring-expenses"]
+            }
+          }
+        },
+        {
+          "name": "Get All Recurring Expenses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/recurring-expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["recurring-expenses"]
+            }
+          }
+        },
+        {
+          "name": "Update Recurring Expense",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 900\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/recurring-expenses/RECURRING_ID",
+              "host": ["{{baseUrl}}"],
+              "path": ["recurring-expenses", "RECURRING_ID"]
+            }
+          }
+        },
+        {
+          "name": "Delete Recurring Expense",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/recurring-expenses/RECURRING_ID",
+              "host": ["{{baseUrl}}"],
+              "path": ["recurring-expenses", "RECURRING_ID"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Get Summary Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reports/summary?month=2025-10",
+              "host": ["{{baseUrl}}"],
+              "path": ["reports", "summary"],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "2025-10"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uploads",
+      "item": [
+        {
+          "name": "Upload Receipt",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/uploads/receipt",
+              "host": ["{{baseUrl}}"],
+              "path": ["uploads", "receipt"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "profile"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

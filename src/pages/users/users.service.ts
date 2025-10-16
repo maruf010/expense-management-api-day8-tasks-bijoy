@@ -20,18 +20,18 @@ export class UsersService {
     return user.save();
   }
 
-  async findByEmail(email: string) {
+  async findByEmail(email: string): Promise<any> {
     return this.userModel.findOne({ email: email.toLowerCase() }).lean();
   }
 
-  async findById(id: string) {
+  async findById(id: string): Promise<any> {
     const user = await this.userModel.findById(id).select('-password').lean();
     if (!user) throw new NotFoundException('User not found');
     return user;
   }
 
   // For admin or debug (not exposed to normal users)
-  async findAll() {
+  async findAll(): Promise<any[]> {
     return this.userModel.find().select('-password').lean();
   }
 }

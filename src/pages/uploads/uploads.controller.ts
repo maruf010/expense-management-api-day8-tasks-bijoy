@@ -12,7 +12,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadsService } from './uploads.service';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import { User } from '../users/schema/schemas/user.schema';
+import { GetUser } from 'src/decorators/get-user.decorator';
 
 @UseGuards(JwtAuthGuard)
 @Controller('uploads')
@@ -24,7 +24,7 @@ export class UploadsController {
     FileInterceptor('file', new UploadsService().getMulterOptions()),
   )
   uploadReceipt(
-    @User('_id') userId,
+    @GetUser('_id') userId,
     @UploadedFile() file: Express.Multer.File,
   ) {
     const fileData = {

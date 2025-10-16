@@ -20,7 +20,7 @@ export class AuthService {
   async signup(dto: any) {
     const ex = await this.users.findByEmail(dto.email);
     if (ex) throw new UnauthorizedException('Email already used');
-    const user = await this.users.create(dto);
+    const user: any = await this.users.create(dto);
     const token = this.jwt.sign({
       sub: user._id.toString(),
       email: user.email,

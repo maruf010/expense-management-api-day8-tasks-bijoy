@@ -1,0 +1,409 @@
+{
+  "info": {
+    "name": "Expense Management API - Demo Data",
+    "description": "Sample data for testing all API endpoints",
+    "version": "1.0.0",
+    "baseUrl": "http://localhost:5000/api/v1"
+  },
+  "users": {
+    "demo_user": {
+      "name": "Maruf Hossain",
+      "email": "maruf@example.com",
+      "password": "password123"
+    },
+    "test_user": {
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "test123"
+    }
+  },
+  "auth": {
+    "signup": {
+      "endpoint": "POST /auth/signup",
+      "body": {
+        "name": "Maruf Hossain",
+        "email": "maruf@example.com",
+        "password": "password123"
+      }
+    },
+    "login": {
+      "endpoint": "POST /auth/login",
+      "body": {
+        "email": "maruf@example.com",
+        "password": "password123"
+      }
+    }
+  },
+  "categories": [
+    {
+      "name": "Food & Dining",
+      "slug": "food-dining",
+      "color": "#FF6B6B",
+      "description": "Restaurant, groceries, and food delivery"
+    },
+    {
+      "name": "Transportation",
+      "slug": "transportation",
+      "color": "#4ECDC4",
+      "description": "Taxi, bus, train, and fuel expenses"
+    },
+    {
+      "name": "Shopping",
+      "slug": "shopping",
+      "color": "#95E1D3",
+      "description": "Clothing, electronics, and general shopping"
+    },
+    {
+      "name": "Entertainment",
+      "slug": "entertainment",
+      "color": "#F38181",
+      "description": "Movies, games, and leisure activities"
+    },
+    {
+      "name": "Bills & Utilities",
+      "slug": "bills-utilities",
+      "color": "#AA96DA",
+      "description": "Electricity, water, internet, and phone bills"
+    },
+    {
+      "name": "Healthcare",
+      "slug": "healthcare",
+      "color": "#FCBAD3",
+      "description": "Medical expenses, medicines, and doctor visits"
+    },
+    {
+      "name": "Education",
+      "slug": "education",
+      "color": "#FFFFD2",
+      "description": "Books, courses, and educational materials"
+    },
+    {
+      "name": "Travel",
+      "slug": "travel",
+      "color": "#A8D8EA",
+      "description": "Vacation, hotel, and travel expenses"
+    }
+  ],
+  "expenses": [
+    {
+      "title": "Lunch at Restaurant",
+      "amount": 450,
+      "date": "2025-10-15",
+      "paymentMethod": "cash",
+      "tags": ["lunch", "restaurant"],
+      "notes": "Lunch with team members",
+      "categoryName": "Food & Dining"
+    },
+    {
+      "title": "Uber Ride to Office",
+      "amount": 180,
+      "date": "2025-10-15",
+      "paymentMethod": "bkash",
+      "tags": ["uber", "commute"],
+      "notes": "Morning ride to office",
+      "categoryName": "Transportation"
+    },
+    {
+      "title": "Grocery Shopping",
+      "amount": 2500,
+      "date": "2025-10-14",
+      "paymentMethod": "card",
+      "tags": ["groceries", "monthly"],
+      "notes": "Monthly grocery shopping",
+      "categoryName": "Food & Dining"
+    },
+    {
+      "title": "Movie Tickets",
+      "amount": 800,
+      "date": "2025-10-13",
+      "paymentMethod": "card",
+      "tags": ["movie", "weekend"],
+      "notes": "Weekend movie with friends",
+      "categoryName": "Entertainment"
+    },
+    {
+      "title": "Electricity Bill",
+      "amount": 3200,
+      "date": "2025-10-12",
+      "paymentMethod": "bkash",
+      "tags": ["bill", "electricity"],
+      "notes": "September electricity bill",
+      "categoryName": "Bills & Utilities"
+    },
+    {
+      "title": "Medicine Purchase",
+      "amount": 650,
+      "date": "2025-10-11",
+      "paymentMethod": "cash",
+      "tags": ["medicine", "health"],
+      "notes": "Monthly medicine",
+      "categoryName": "Healthcare"
+    },
+    {
+      "title": "Online Course",
+      "amount": 1500,
+      "date": "2025-10-10",
+      "paymentMethod": "card",
+      "tags": ["course", "learning"],
+      "notes": "NestJS advanced course",
+      "categoryName": "Education"
+    },
+    {
+      "title": "Coffee Shop",
+      "amount": 250,
+      "date": "2025-10-16",
+      "paymentMethod": "cash",
+      "tags": ["coffee", "snack"],
+      "notes": "Evening coffee",
+      "categoryName": "Food & Dining"
+    },
+    {
+      "title": "T-Shirt Purchase",
+      "amount": 890,
+      "date": "2025-10-09",
+      "paymentMethod": "card",
+      "tags": ["clothing", "shopping"],
+      "notes": "New t-shirt from online store",
+      "categoryName": "Shopping"
+    },
+    {
+      "title": "Internet Bill",
+      "amount": 1200,
+      "date": "2025-10-08",
+      "paymentMethod": "bkash",
+      "tags": ["bill", "internet"],
+      "notes": "Monthly internet bill",
+      "categoryName": "Bills & Utilities"
+    }
+  ],
+  "budgets": [
+    {
+      "month": "2025-10",
+      "categoryName": "Food & Dining",
+      "limit": 15000,
+      "notes": "Monthly food budget"
+    },
+    {
+      "month": "2025-10",
+      "categoryName": "Transportation",
+      "limit": 5000,
+      "notes": "Commute and travel"
+    },
+    {
+      "month": "2025-10",
+      "categoryName": "Entertainment",
+      "limit": 3000,
+      "notes": "Movies and leisure"
+    },
+    {
+      "month": "2025-10",
+      "categoryName": "Bills & Utilities",
+      "limit": 8000,
+      "notes": "All utility bills"
+    },
+    {
+      "month": "2025-10",
+      "categoryName": "Shopping",
+      "limit": 10000,
+      "notes": "Clothing and electronics"
+    }
+  ],
+  "recurringExpenses": [
+    {
+      "title": "Netflix Subscription",
+      "amount": 800,
+      "cadence": "monthly",
+      "startDate": "2025-10-01",
+      "categoryName": "Entertainment",
+      "notes": "Monthly Netflix premium"
+    },
+    {
+      "title": "Gym Membership",
+      "amount": 2000,
+      "cadence": "monthly",
+      "startDate": "2025-10-01",
+      "categoryName": "Healthcare",
+      "notes": "Monthly gym fee"
+    },
+    {
+      "title": "Mobile Recharge",
+      "amount": 500,
+      "cadence": "weekly",
+      "startDate": "2025-10-01",
+      "categoryName": "Bills & Utilities",
+      "notes": "Weekly mobile recharge"
+    },
+    {
+      "title": "Coffee Subscription",
+      "amount": 150,
+      "cadence": "daily",
+      "startDate": "2025-10-01",
+      "endDate": "2025-10-31",
+      "categoryName": "Food & Dining",
+      "notes": "Daily coffee at office"
+    },
+    {
+      "title": "Spotify Premium",
+      "amount": 400,
+      "cadence": "monthly",
+      "startDate": "2025-10-01",
+      "categoryName": "Entertainment",
+      "notes": "Music streaming subscription"
+    }
+  ],
+  "sampleRequests": {
+    "createCategory": {
+      "method": "POST",
+      "endpoint": "/categories",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "name": "Food & Dining",
+        "slug": "food-dining",
+        "color": "#FF6B6B"
+      }
+    },
+    "createExpense": {
+      "method": "POST",
+      "endpoint": "/expenses",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "title": "Lunch at Restaurant",
+        "amount": 450,
+        "categoryId": "CATEGORY_ID_HERE",
+        "date": "2025-10-15",
+        "paymentMethod": "cash",
+        "tags": ["lunch", "restaurant"],
+        "notes": "Lunch with team"
+      }
+    },
+    "createBudget": {
+      "method": "POST",
+      "endpoint": "/budgets",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "month": "2025-10",
+        "categoryId": "CATEGORY_ID_HERE",
+        "limit": 15000
+      }
+    },
+    "createRecurringExpense": {
+      "method": "POST",
+      "endpoint": "/recurring-expenses",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "title": "Netflix Subscription",
+        "amount": 800,
+        "categoryId": "CATEGORY_ID_HERE",
+        "cadence": "monthly",
+        "startDate": "2025-10-01"
+      }
+    },
+    "getExpenses": {
+      "method": "GET",
+      "endpoint": "/expenses?month=2025-10&categoryId=CATEGORY_ID",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN"
+      }
+    },
+    "getReportSummary": {
+      "method": "GET",
+      "endpoint": "/reports/summary?month=2025-10",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN"
+      }
+    },
+    "uploadReceipt": {
+      "method": "POST",
+      "endpoint": "/uploads/receipt",
+      "headers": {
+        "Authorization": "Bearer YOUR_JWT_TOKEN",
+        "Content-Type": "multipart/form-data"
+      },
+      "body": {
+        "file": "SELECT_IMAGE_FILE"
+      }
+    }
+  },
+  "testingSteps": [
+    {
+      "step": 1,
+      "action": "Signup",
+      "endpoint": "POST /auth/signup",
+      "description": "Create a new user account"
+    },
+    {
+      "step": 2,
+      "action": "Login",
+      "endpoint": "POST /auth/login",
+      "description": "Login and get JWT token"
+    },
+    {
+      "step": 3,
+      "action": "Create Categories",
+      "endpoint": "POST /categories",
+      "description": "Create all 8 categories from the list"
+    },
+    {
+      "step": 4,
+      "action": "Create Expenses",
+      "endpoint": "POST /expenses",
+      "description": "Add sample expenses with category IDs"
+    },
+    {
+      "step": 5,
+      "action": "Set Budgets",
+      "endpoint": "POST /budgets",
+      "description": "Set monthly budgets for categories"
+    },
+    {
+      "step": 6,
+      "action": "Add Recurring Expenses",
+      "endpoint": "POST /recurring-expenses",
+      "description": "Setup recurring payments"
+    },
+    {
+      "step": 7,
+      "action": "View Reports",
+      "endpoint": "GET /reports/summary",
+      "description": "Check expense summary and analytics"
+    },
+    {
+      "step": 8,
+      "action": "Upload Receipt",
+      "endpoint": "POST /uploads/receipt",
+      "description": "Upload a receipt image"
+    }
+  ],
+  "paymentMethods": [
+    "cash",
+    "card",
+    "bkash",
+    "nagad",
+    "rocket",
+    "bank_transfer"
+  ],
+  "cadenceOptions": [
+    "daily",
+    "weekly",
+    "monthly"
+  ],
+  "notes": {
+    "authentication": "All endpoints except /auth/signup and /auth/login require JWT token in Authorization header",
+    "dateFormat": "Use ISO 8601 format (YYYY-MM-DD) for dates",
+    "monthFormat": "Use YYYY-MM format for month queries",
+    "fileUpload": "Supported image formats: jpg, jpeg, png, gif (max 5MB)",
+    "validation": "All requests are validated. Extra fields will be removed, invalid fields will throw errors"
+  }
+}

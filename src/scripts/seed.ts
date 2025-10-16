@@ -10,6 +10,7 @@ async function seed() {
   );
   console.log('Connected for seeding');
   const db = (await import('mongoose')).connection.db;
+  if (!db) throw new Error('Database connection not established');
   await db.dropDatabase();
   const usersCol = db.collection('users');
   const pw = await bcrypt.hash('secret123', 10);
